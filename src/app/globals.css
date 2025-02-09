@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@media (min-width:320px) and (max-width: 1990px) {
+    /* Hides the scrollbar but keeps the scrolling functionality */
+    .carousel-wrapper::-webkit-scrollbar {
+      display: none; /* Hides the scrollbar in webkit browsers */
+    }
+  
+    .carousel-wrapper {
+      -ms-overflow-style: none; /* Hides the scrollbar in IE and Edge */
+      scrollbar-width: 0; /* Hides the scrollbar in Firefox */
+    }
+}
