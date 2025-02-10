@@ -6,7 +6,7 @@ import Footer from "./components/footer";
 import { CartProvider } from "./context";
 import { Toaster } from "react-hot-toast"; // Import Toaster for notifications
 import Topbar from "./components/Topbar";
-import Navbar from "./components/Navbar";
+import Header from "./components/Header";
 
 // Load custom fonts
 const geistSans = localFont({
@@ -44,7 +44,7 @@ export default function RootLayout({
       > <ClerkProvider>
         <CartProvider>
           <Topbar />
-          <Navbar/>
+          <Header/>
           <Toaster /> {/* Toaster component for global notifications */}
           <main>{children}</main>
           <Footer />
