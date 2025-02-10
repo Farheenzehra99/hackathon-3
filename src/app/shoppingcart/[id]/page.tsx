@@ -107,7 +107,6 @@ const ProductDetailPage = async ({
       </div>
     );
   } catch (error) {
-    console.error("Error fetching product details:", error);
     return <div>Something went wrong</div>;
   }
 };
