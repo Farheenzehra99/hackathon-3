@@ -19,5 +19,14 @@ export const fetchProducts = async () => {
     category
   }`;
 
-  return client.fetch(query);
+  try {
+    const products = await client.fetch(query);
+    if (!products.length) {
+      console.warn("No products found.");
+    }
+    return products;
+  } catch (error) {
+    console.error("Error fetching products:", error);
+    return [];
+  }
 };

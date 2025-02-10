@@ -27,6 +27,7 @@
     "clsx": "^2.1.1",
     "dotenv": "^16.4.7",
     "font-awesome": "^4.7.0",
+    "force": "^0.0.3",
     "lucide-react": "^0.475.0",
     "nanoid": "^5.0.9",
     "next": "^15.1.6",

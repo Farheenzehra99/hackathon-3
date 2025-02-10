@@ -29,12 +29,12 @@ export function ProductCard({
           <span className="absolute left-3 top-3 z-10 rounded bg-[#FB2E86] px-2 py-1 text-xs text-white">
             New
           </span>
-        {/* )} */}
-        {/* {discountPercentage && (
+         {/* )} 
+         {discountPercentage && (
           <span className="absolute left-3 top-3 z-10 rounded bg-[#FB2E86] px-2 py-1 text-xs text-white">
             {discountPercentage} %
           </span>
-        )} */}
+        )}  */}
         </div>
         <img
           src={imageUrl}

@@ -16,16 +16,15 @@ interface Product {
   ratingCount: number;
   tags: string[];
   sizes: string[];
-  image: string;
+  image: any; // Updated to handle Sanity image reference
 }
 
-// Fetch product data using a fetch call inside the component
 const ProductDetailPage = async ({
   params,
 }: {
   params: Promise<{ id: string }>;
 }) => {
-  const resolvedParams = await params; // Resolve the promise
+  const resolvedParams = await params;
   const { id } = resolvedParams;
 
   const query = `*[_type == "product" && _id == $id]{
@@ -44,7 +43,7 @@ const ProductDetailPage = async ({
 
   try {
     const result = await client.fetch(query, { id });
-    const product = result[0] || null; // Get the first product or null if not found
+    const product = result[0] || null;
 
     if (!product) {
       return <div>Product not found</div>;
@@ -57,18 +56,18 @@ const ProductDetailPage = async ({
         </h1>
         <div className="flex flex-col sm:flex-row gap-8">
           {/* Product Image Section */}
-
-
-
-
           <div className="flex-1 max-w-sm mx-auto sm:max-w-lg sm:w-1/2">
-            <Image
-              src={product.image || "/placeholder.png"} // Handle the image URL
-              alt={product.name || "Product Image"}
-              width={500} // Larger width
-              height={500} // Larger height
-              className="w-full h-full object-contain rounded-md mb-4" // Maintain aspect ratio
-            />
+            {product.image ? (
+              <Image
+                src={urlFor(product.image).url()}
+                alt={product.name || "Product Image"}
+                width={500}
+                height={500}
+                className="w-full h-full object-contain rounded-md mb-4"
+              />
+            ) : (
+              <p>No Image Available</p>
+            )}
           </div>
 
           {/* Product Information Section */}
