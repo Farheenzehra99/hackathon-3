@@ -1,6 +1,5 @@
 import Stripe from 'stripe';
 
-console.log("Loading Stripe API..."); // 🔴 Step 1: Check if Stripe is loading
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || '', {
   apiVersion: '2024-04-10', // ✅ Correct apiVersion
@@ -8,10 +7,8 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || '', {
 
 export async function POST(req) {
   try {
-    console.log("Received a POST request at /api/checkout"); // 🔴 Step 2: Confirm API hit
 
     const { items } = await req.json();
-    console.log("Received Items:", items); // 🔴 Step 3: Log received items
 
     if (!process.env.STRIPE_SECRET_KEY) {
       console.error("❌ Error: STRIPE_SECRET_KEY is missing!");
@@ -36,7 +33,6 @@ export async function POST(req) {
       cancel_url: `${process.env.NEXT_PUBLIC_BASE_URL}/cancel`,
     });
 
-    console.log("✅ Stripe Session Created:", session.id); // 🔴 Step 4: Confirm session creation
 
     return new Response(JSON.stringify({ url: session.url }), { status: 200 });
   } catch (error) {
@@ -45,4 +41,3 @@ export async function POST(req) {
   }
 }
 
-console.log("Stripe Secret Key:", process.env.STRIPE_SECRET_KEY); // 🔴 Step 6: Confirm Stripe key
